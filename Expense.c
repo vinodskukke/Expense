@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+
+#define NORMAL_SHARE 4500
 
 // Members structure
 typedef struct
@@ -20,11 +23,32 @@ typedef struct
 member Bachelor_home[6]; // Member Array with 6 members
 member *member_ptr; // Member pointer
 static int count=0; // To get the active members count
+static int total=0;
+static int balance=0;
+
+void UpdateBalance()
+{
+  int old_total = total;
+  total = (NORMAL_SHARE*count);
+  if(!balance)
+    balance = total;
+  else
+    balance += (total-old_total);
+}
+
+void AddMember(char* name)
+{
+  member_ptr = &Bachelor_home[count++];
+  strcpy(member_ptr->name,name);
+  member_ptr->normal_share = NORMAL_SHARE;
+  member_ptr->extra_share = 0;
+  UpdateBalance(); 
+}
 
 int main()
 {
   printf("\t\t\t\tWelcome to Bachelor's Home");
-  char temp_name[20];
+  char temp_name[10];
   int i,rc,amt,op;
   while(1)
   {
@@ -40,10 +64,15 @@ int main()
     switch(op)
     {
       case 1:
+        printf("Enter the name of the member\n");
+        scanf("%s",temp_name);
+        AddMember(temp_name);
         break;
       case 2:
         break;
       case 3:
+        printf("Monthly budget amount is %d\n",total);
+        printf("Remaining amount is %d\n",balance);
         break;
       case 4:
         break;
