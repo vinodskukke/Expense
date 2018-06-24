@@ -75,6 +75,7 @@ int main()
         printf("Remaining amount is %d\n",balance);
         break;
       case 4:
+        printf("Enter Expense details\n");
         break;
       case 5:
         break;
