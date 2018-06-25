@@ -19,7 +19,7 @@ class Expense {
 
 class ExpenseList {
   public:
-    ExpenseList(Expense& exp);
+    ExpenseList(Expense* exp);
     Expense expense_t;
     ExpenseList* next;
 };
@@ -29,7 +29,7 @@ class Member {
     Member(string name);
     ~Member();
     void displayExpenseList();
-    bool AddExpense(Expense exp);
+    bool AddExpense(Expense* exp);
     bool updateExtraShare(int amount);
     int _monthShare;
     string _name;

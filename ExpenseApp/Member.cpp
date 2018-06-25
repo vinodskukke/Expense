@@ -1,9 +1,9 @@
 #include"Member.h"
 using namespace std;
 
-ExpenseList::ExpenseList(Expense& exp)
+ExpenseList::ExpenseList(Expense* exp)
 {
-  this->expense_t = exp;
+  this->expense_t = *exp;
   this->next = NULL;
 }
 
@@ -47,7 +47,7 @@ bool Member::updateExtraShare(int amount)
   return true;
 }
 
-bool Member::AddExpense(Expense exp)
+bool Member::AddExpense(Expense* exp)
 {
   if (_expCount < MAX_EXPENSE)
   {
@@ -62,6 +62,7 @@ bool Member::AddExpense(Expense exp)
       _expListPtr[_expCount-1]->next = _expListPtr[_expCount];
       _expListPtr[_expCount]->next = NULL;
     }
+    _expCount++;
   }
 }
 

@@ -5,11 +5,12 @@ int main()
 {
   cout<<"Welcome to Expense App"<<endl;
   cout<<endl;
+  int op;
+  Account mainAcct(30000);
+  string tempStr;
+  Expense tempExp;
   while(1)
   {
-    int op;
-    Account mainAcct(30000);
-    string tempStr;
     cout<<"Enter 1 to Add Member"<<endl;
     cout<<"Enter 2 to Delete Member" <<endl;
     cout<<"Enter 3 to Add Expense"<<endl;
@@ -27,6 +28,16 @@ int main()
       case 2:
         break;
       case 3:
+	cout <<"Enter the Expense date" << endl;
+        cin >> tempExp.date;
+        cout <<"Enter the Expense name" << endl;
+	cin >> tempExp.expense_name;
+	cout <<"Enter the Expense Amount" << endl;
+	cin >> tempExp.amount;
+        cout <<"Paid by"<< endl;
+        cin >> tempStr;
+	mainAcct.addExpense(&tempExp,&tempStr);
+	mainAcct.displayAccountDetails();
         break;
       case 4:
         break;
