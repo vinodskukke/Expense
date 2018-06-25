@@ -9,6 +9,7 @@ int main()
   Account mainAcct(30000);
   string tempStr;
   Expense tempExp;
+  Member* tempMemPtr;
   while(1)
   {
     cout<<"Enter 1 to Add Member"<<endl;
@@ -37,13 +38,17 @@ int main()
         cout <<"Paid by"<< endl;
         cin >> tempStr;
 	mainAcct.addExpense(&tempExp,&tempStr);
-	mainAcct.displayAccountDetails();
         break;
       case 4:
         break;
       case 5:
+	mainAcct.displayAccountDetails();
         break;
       case 6:
+	cout <<"Enter the Member's Name" << endl;
+        cin >> tempStr;
+	tempMemPtr = mainAcct.findMemberFromName(&tempStr);
+	tempMemPtr->displayExpenseList();
         break;
       case 0:
       default:

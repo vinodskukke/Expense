@@ -14,7 +14,7 @@ class Account {
     bool addMember(string name);
     void updateExpenseAmount(int amount);
     bool addExpense(Expense* exp,string* name);
-    Member* FindMemberFromName(string* name);
+    Member* findMemberFromName(string* name);
   private:
     int totalMonthlyShare;
     int usedAmount;

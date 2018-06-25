@@ -32,7 +32,7 @@ void Account::displayAccountDetails()
   cout <<"Remaining balance is" <<(totalMonthlyShare - usedAmount) <<endl;
 }
 
-Member* Account::FindMemberFromName(string* name)
+Member* Account::findMemberFromName(string* name)
 {
   for(int i=0;i<countMem;i++)
   {
@@ -44,7 +44,7 @@ Member* Account::FindMemberFromName(string* name)
 
 bool Account::addExpense(Expense* exp,string* name)
 {
-  Member* tempMem = FindMemberFromName(name);
+  Member* tempMem = findMemberFromName(name);
   if(tempMem != NULL)
   {
     tempMem->AddExpense(exp);
